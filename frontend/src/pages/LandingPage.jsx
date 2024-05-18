@@ -18,7 +18,7 @@ export default function LandingPage() {
                                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                                         Unlock the Power of AI-Powered Article Summarization
                                     </h1>
-                                    <p className="max-w-[600px] text-gray-500 md:text-xl pt-3">
+                                    <p className="max-w-[600px] text-gray-600 md:text-xl pt-3">
                                         Our web app uses advanced AI algorithms to quickly summarize PDF articles, extract key keywords, and
                                         answer questions about the content. Save time and gain deeper insights with our powerful tools.
                                     </p>
@@ -26,13 +26,13 @@ export default function LandingPage() {
                                 <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
                                     <Link
                                         className="inline-flex h-12 items-center justify-center rounded-md bg-gray-900 px-10 text-base font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
-                                        href="#"
+                                        to='home'
                                     >
                                         Try It Now
                                     </Link>
                                     <Link
                                         className="inline-flex h-12 items-center justify-center rounded-md border border-gray-200 bg-white px-10 text-base font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
-                                        href="#"
+                                        to='/about'
                                     >
                                         Learn More
                                     </Link>
@@ -62,7 +62,7 @@ export default function LandingPage() {
                                     </p>
                                     <Link
                                         className="inline-flex items-center text-sm font-medium text-gray-900 hover:underline underline-offset-4"
-                                        href="#"
+                                        to='/about'
                                     >
                                         Learn More
                                         <ArrowRightIcon className="ml-1 h-4 w-4" />
@@ -79,7 +79,7 @@ export default function LandingPage() {
                                     </p>
                                     <Link
                                         className="inline-flex items-center text-sm font-medium text-gray-900 hover:underline underline-offset-4"
-                                        href="#"
+                                        to='/about'
                                     >
                                         Learn More
                                         <ArrowRightIcon className="ml-1 h-4 w-4" />
@@ -96,7 +96,7 @@ export default function LandingPage() {
                                     </p>
                                     <Link
                                         className="inline-flex items-center text-sm font-medium text-gray-900 hover:underline underline-offset-4"
-                                        href="#"
+                                        to='/about'
                                     >
                                         Learn More
                                         <ArrowRightIcon className="ml-1 h-4 w-4" />
