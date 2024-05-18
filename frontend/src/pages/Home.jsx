@@ -13,7 +13,7 @@ const Home = () => {
 
     const handleUpload = (e) => {
         e.preventDefault();
-        navigate('/');
+        navigate('/summary');
     };
 
     return (
@@ -21,7 +21,7 @@ const Home = () => {
             <div className="flex flex-col min-h-screen">
                 <Navbar />
                 <main className="flex flex-1 items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div className="mx-auto w-full max-w-md space-y-8 bg-gray-50 p-8 rounded-lg shadow-2xl">
+                    <div className="mx-auto w-full max-w-md space-y-8 bg-gray-100 p-8 rounded-lg shadow-2xl">
                         <div className="space-y-2 text-center">
                             <h2 className="text-3xl font-extrabold text-gray-900">Upload a PDF</h2>
                             <p className="text-gray-600">Select a PDF file to upload.</p>

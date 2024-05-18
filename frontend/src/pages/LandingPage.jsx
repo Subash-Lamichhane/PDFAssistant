@@ -19,7 +19,7 @@ export default function LandingPage() {
                                         Unlock the Power of AI-Powered Article Summarization
                                     </h1>
                                     <p className="max-w-[600px] text-gray-600 md:text-xl pt-3">
-                                        Our web app uses advanced AI algorithms to quickly summarize PDF articles, extract key keywords, and
+                                        PDF summarizer uses advanced AI algorithms to quickly summarize PDF articles, extract key keywords, and
                                         answer questions about the content. Save time and gain deeper insights with our powerful tools.
                                     </p>
                                 </div>
@@ -57,7 +57,7 @@ export default function LandingPage() {
                                 <div className="space-y-2">
                                     <h3 className="text-xl font-bold">PDF Summarization</h3>
                                     <p className="text-gray-500">
-                                        Our AI-powered tool quickly summarizes the key points of any PDF article, saving you time and
+                                        The AI-powered tool quickly summarizes the key points of any PDF article, saving you time and
                                         effort.
                                     </p>
                                     <Link
@@ -74,7 +74,7 @@ export default function LandingPage() {
                                 <div className="space-y-2">
                                     <h3 className="text-xl font-bold">Keyword Extraction</h3>
                                     <p className="text-gray-500">
-                                        Our AI algorithms identify the most important keywords in any PDF, helping you quickly understand
+                                        The AI algorithms identify the most important keywords in any PDF, helping you quickly understand
                                         the content.
                                     </p>
                                     <Link
@@ -91,7 +91,7 @@ export default function LandingPage() {
                                 <div className="space-y-2">
                                     <h3 className="text-xl font-bold">Question Answering</h3>
                                     <p className="text-gray-500">
-                                        Our AI-powered question answering tool can provide detailed answers to your questions about any PDF
+                                        The AI-powered question answering tool can provide detailed answers to your questions about any PDF
                                         content.
                                     </p>
                                     <Link
