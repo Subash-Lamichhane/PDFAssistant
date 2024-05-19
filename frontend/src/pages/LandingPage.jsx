@@ -19,7 +19,7 @@ export default function LandingPage() {
                                         Unlock the Power of AI-Powered Article Summarization
                                     </h1>
                                     <p className="max-w-[600px] text-gray-600 md:text-xl pt-3">
-                                        PDF summarizer uses advanced AI algorithms to quickly summarize PDF articles, extract key keywords, and
+                                        PDFAssistant uses advanced AI algorithms to quickly summarize PDF articles, extract key keywords, and
                                         answer questions about the content. Save time and gain deeper insights with our powerful tools.
                                     </p>
                                 </div>
