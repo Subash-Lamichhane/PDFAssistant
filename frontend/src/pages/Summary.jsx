@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Summary = () => {
     // const qnanswer = {
     //     "result": {
@@ -20,10 +21,15 @@ const Summary = () => {
     const pdffile = location.state?.selectedFile;
     const tagsData = location.state?.tagData;
     const titleData = location.state?.title[0];
-    // console.log("Tag data=",JSON.parse(tagData))
+    const totalPages = location.state?.totalPages;
+
+    const [summary,setSummary] = useState(summaryData)
     const [question, setQuestion] = useState('');
     const [qnans, setQnans] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [pageno, setPageNo] = useState(0);
+    const [summaryLoading, setSummaryLoading] = useState(false)
+    const [nextPageText, setNextPageText] = useState("Next Page >")
     const capitalizeTitle = (title) => {
         if (typeof title !== 'string') {
             return ''; // Or handle the case where title is not a string as needed
@@ -36,13 +42,48 @@ const Summary = () => {
 
     const title = capitalizeTitle(titleData)
 
+    const handleNextPage = async () => {
+        setSummaryLoading(true)
+
+        if (totalPages > (pageno+1)) {
+            setPageNo(pageno + 1);
+            
+
+            const formDataSummary = new FormData();
+            formDataSummary.append('file', pdffile);
+            formDataSummary.append('function_name', 'get_summary');
+            formDataSummary.append('page_no', pageno+1);
+
+            const response = await axios.post('http://127.0.0.1:8000/process_pdf/', formDataSummary, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            setSummary(response.data.result)
+            // console.log(pageno+1)
+            // console.log(response.data.result)
+            // setSummary([
+            //             "tehajkdhfkjasfd Solar flares magnetic eruptions from the Suns corona and CMEs massive plasma expulsions captivate scientists due to their potential effects on modern technology",
+            //             "The study explores a thorough analysis of solar flares and coronal mass ejections (CMEs) and their impact on Earths satellite communication and electrical grids",
+            //             "The findings reveal the potential devastation caused by rare super solar storms occurring once or twice per century"
+            //         ])
+            console.log(summary)
+        }
+        else{
+            setNextPageText("End of PDF")
+        }
+        setSummaryLoading(false)
+    }
+
     const askAIHandler = async () => {
         if (question.trim()) {
             const formDataSummary = new FormData();
             formDataSummary.append('file', pdffile);
             formDataSummary.append('function_name', 'get_answer');
             formDataSummary.append('question', question);
-            formDataSummary.append('page_no', 0);
+            formDataSummary.append('page_no', pageno);
+
             setLoading(true)
             const response = await axios.post('http://127.0.0.1:8000/process_pdf/', formDataSummary, {
                 headers: {
@@ -50,8 +91,8 @@ const Summary = () => {
                 },
             });
             setLoading(false)
-            // console.log(response);
-            const qnan = [question, response.data.result.explanation]
+            console.log(response);
+            const qnan = [question, response.data.result.explanation ? response.data.result.explanation : (response.data.result.answer ? response.data.result.answer : "No answer available")];
             setQnans([qnan, ...qnans]);
             setQuestion('');
         }
@@ -76,14 +117,50 @@ const Summary = () => {
                     </div>
                     <div>
                         <h2 className="text-3xl font-bold tracking-tighter ">Summary</h2>
-                        <ul className="text-xl text-gray-600 pt-4">
-                            {summaryData.map((item, index) => (
-                                <li key={index} className="mb-2">{item}</li>
-                            ))}
-                        </ul>
+                        {summaryLoading == true ?
+                            <>
+                                <div className="flex flex-1 items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
+                                    <button
+                                        disabled
+                                        type="button"
+                                        className="py-4 px-8 text-lg font-medium text-gray-900 bg-white rounded-lg border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 inline-flex items-center"
+                                    >
+                                        <svg
+                                            aria-hidden="true"
+                                            role="status"
+                                            className="inline w-6 h-6 mr-4 text-gray-200 animate-spin"
+                                            viewBox="0 0 100 101"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                                fill="#1C64F2"
+                                            />
+                                        </svg>
+                                        Generating Summary...
+                                    </button>
+                                </div>
+                            </>
+                            :
+                            <ul className="list-disc text-xl text-gray-600 pt-4">
+                                {summary.map((item, index) => (
+                                    <li key={index} className="mb-2">{item}</li>
+                                ))}
+                            </ul>
+                        }
+                        <div className='text-center my-5 text-gray-500 text-lg'>{"<---"} Page: {pageno + 1} {"--->"}</div>
+                        <div className="flex justify-center items-center">
+                            <button className='bg-black text-white rounded-lg py-2 px-4 font-[500]' onClick={handleNextPage}>{nextPageText}</button>
+                        </div>
+
                     </div>
                     <div>
-                        <h2 className="text-3xl font-bold tracking-tighter ">Ask a Question Regarding PDF</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter ">Ask Questions Regarding PDF To AI</h2>
                         <div className="mt-4 grid w-full max-w-md gap-4">
                             <input
                                 value={question}

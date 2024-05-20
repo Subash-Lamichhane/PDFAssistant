@@ -50,6 +50,7 @@ const Home = () => {
         formDataTitle.append('file', selectedFile);
         formDataTitle.append('function_name', 'get_topic');
         formDataTitle.append('page_no', 0);
+
         const formDataTags = new FormData();
         formDataTags.append('file', selectedFile);
         formDataTags.append('function_name', 'get_tags');
@@ -64,21 +65,20 @@ const Home = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log(response);
+            console.log(response)
 
             const responseTitle = await axios.post('http://127.0.0.1:8000/process_pdf/', formDataTitle, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log(responseTitle);
 
             const responseTags = await axios.post('http://127.0.0.1:8000/process_pdf/', formDataTags, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log("Tag response=", responseTags)
+            // console.log("Tag response=", responseTags)
             const tagsArray = responseTags.data.result.tags
             const cleanedString = tagsArray
                 .slice(1, -1)  // Remove the square brackets at the start and end
@@ -92,13 +92,14 @@ const Home = () => {
             // console.log(parsedArray.slice(0, 5));
             // Determine the final array based on its size
             const finalArray = parsedArray.length > 5 ? parsedArray.slice(0, 5) : parsedArray;
-
+            // console.log(response.data.totalpages);
             navigate('/summary', {
                 state: {
                     response: response.data.result,
                     selectedFile,
                     tagData: finalArray,
                     title: responseTitle.data.result.topics,
+                    totalPages: response.data.totalpages,
                 }
             });
 
