@@ -22,7 +22,7 @@ UPLOAD_DIR = "uploaded_pdfs"
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
-def extract_text_from_pdf(file_path, page_no):
+def extract_text(file_path, page_no):
     try:
         with open(file_path, "rb") as file:
             pdf_reader = PyPDF2.PdfReader(file)
@@ -34,15 +34,15 @@ def extract_text_from_pdf(file_path, page_no):
     except FileNotFoundError:
         return None
 
-def get_summary(text):
+def summarize_text(text):
     if text is not None:
         slim_model = ModelCatalog().load_model("slim-summary-tool")
-        response = slim_model.function_call(text, params="[key points (3)]", function="summarize")
+        response = slim_model.function_call(text, params=["key points (3)"], function="summarize")
         return response["llm_response"]
     else:
         return "Invalid text"
 
-def get_tags(text):
+def classify_tags(text):
     if text is not None:
         slim_model = ModelCatalog().load_model("slim-tags-tool")
         response = slim_model.function_call(text, params=["tags"], function="classify")
@@ -50,7 +50,7 @@ def get_tags(text):
     else:
         return "Invalid text"
 
-def get_topic(text):
+def identify_topic(text):
     if text is not None:
         slim_model = ModelCatalog().load_model("slim-topics-tool")
         response = slim_model.function_call(text, params=["topics"], function="classify")
@@ -86,26 +86,29 @@ async def process_pdf(
         pdf_pages = len(pdf_reader.pages)
 
     # Extract text from the specified page
-    text = extract_text_from_pdf(file_path, page_no)
+    text = extract_text(file_path, page_no)
     if text is None:
         os.remove(file_path)  # Clean up the file
         raise HTTPException(status_code=404, detail="PDF or page not found")
 
     # Process the function call
-    if function_name == "get_summary":
-        result = get_summary(text)
-    elif function_name == "get_tags":
-        result = get_tags(text)
-    elif function_name == "get_topic":
-        result = get_topic(text)
-    elif function_name == "get_answer":
-        if question is None:
-            os.remove(file_path)  # Clean up the file
-            raise HTTPException(status_code=400, detail="Question parameter is required for get_answer function")
-        result = get_answer(text, question)
-    else:
-        os.remove(file_path)  # Clean up the file
-        raise HTTPException(status_code=400, detail="Invalid function name")
+    match function_name:
+        case "get_summary":
+            result = summarize_text(text)
+        case "get_tags":
+            result = classify_tags(text)
+        case "get_topic":
+            result = identify_topic(text)
+        case "get_answer":
+            if question is None:
+                if file_path:
+                    os.remove(file_path)  # Clean up the file
+                raise HTTPException(status_code=400, detail=" Question not found!")
+            result = get_answer(text, question)
+        case _:
+            if file_path:
+                os.remove(file_path)  # Clean up the file
+            raise HTTPException(status_code=400, detail="Invalid name")
 
     os.remove(file_path)  # Clean up the file
     return JSONResponse(content={"result": result, "totalpages": pdf_pages})

@@ -30,7 +30,7 @@
     </p>
 </p>
 
-Welcome to PDFAssistant, a powerful web application designed to make working with PDF documents easier and more efficient. PDFAssistant allows you to extract keywords, generate summaries by page, and ask questions related to the content of your PDFs. Whether you're a student, researcher, or professional, PDFAssistant is here to help you quickly navigate and understand your documents.
+Welcome to PDFAssistant, a powerful web application designed to make working with PDF documents easier and more efficient. PDFAssistant allows you to extract keywords, generate summaries by page, and ask questions related to the content of your PDFs with the help of llmware. Whether you're a student, researcher, or professional, PDFAssistant is here to help you quickly navigate and understand your documents.
 
 ## Introduction
 PDFAssistant is a web application that provides a suite of tools for analyzing PDF documents. It simplifies the process of extracting essential information from PDFs, enabling users to focus on the content that matters most. With PDFAssistant, you can obtain key insights from your documents without the hassle of manually sifting through pages.
@@ -48,7 +48,7 @@ PDFAssistant is a web application that provides a suite of tools for analyzing P
 - React
 - Tailwind
 - FastAPI
-- Uvicorn
+- Uvicogitrn
 - LLMWare models
 
 ## Getting Started
@@ -64,7 +64,7 @@ git clone https://github.com/Subash-Lamichhane/PDFAssistant.git
 cd PDFAssistant
 ```
 
-### Frontend Setup
+### Setup Frontend 
 
 #### Navigate to the frontend directory:
 ```bash
@@ -81,17 +81,21 @@ yarn install
 yarn run dev
 ```
 
-### Backend Setup
+### Setup Backend 
 
 #### Navigate to the backend directory:
 ```bash
 cd ../backend
 ```
 
-#### Set up a virtual environment (recommended):
+#### Set up a virtual environment :
 ```bash
 python -m venv env
-source env/bin/activate  # For Windows use `env\Scripts\activate`
+
+source env/bin/activate 
+
+# For Windows use:
+env\Scripts\activate # to activate
 ```
 
 #### Install dependencies:
@@ -102,7 +106,7 @@ pip install -r requirements.txt
 
 #### Start the API server:
 ```bash
-uvicorn api_article:app --reload
+uvicorn server:app --reload
 ```
 
 ## Usage
@@ -118,10 +122,10 @@ Open your browser and navigate to `http://localhost:5173`.
 
 ## Screenshots
 
-![Landing](https://github.com/rajesh-adk-137/ArticleInsight/assets/screenshot-placeholder-1)
-![Dashboard](https://github.com/rajesh-adk-137/ArticleInsight/assets/screenshot-placeholder-2)
-![Features](https://github.com/rajesh-adk-137/ArticleInsight/assets/screenshot-placeholder-3)
-![Sentiment Analysis](https://github.com/rajesh-adk-137/ArticleInsight/assets/screenshot-placeholder-4)
+![Landing](https://github.com/Subash-Lamichhane/PDFAssistant/assets/109226874/ce4a4009-fba2-45d7-b70a-dd60bfc088a3)
+![Home](https://github.com/Subash-Lamichhane/PDFAssistant/assets/109226874/0473da23-0d1a-48cc-a1d5-d4edf0740b97)
+![About](https://github.com/Subash-Lamichhane/PDFAssistant/assets/109226874/f9829735-7ecf-4e0a-8c0d-fd97587493ba)
+![Summary and Qna](https://github.com/Subash-Lamichhane/PDFAssistant/assets/109226874/26fac2dc-d9ba-44fa-a24c-258e546db7a8)
 
 ## Contributing
 
@@ -159,11 +163,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-- [LLMWare](https://www.llmware.ai/) for their powerful AI models
-- [React](https://reactjs.org/) for the amazing JavaScript library
-- [Yarn](https://yarnpkg.com/) for the reliable package manager
+- [LLMWare](https://www.llmware.ai/) for AI models
+- [React](https://reactjs.org/) library for web and native user interfaces
+- [Tailwind](https://tailwindcss.com/) for the styling
 - [FastAPI](https://fastapi.tiangolo.com/) for the fast and efficient web framework
-- [Python](https://www.python.org/) for the versatile programming language
+- [Uvicorn](https://www.uvicorn.org/) to serve Python web applications that adhere to the ASGI specification
 
 ---
 

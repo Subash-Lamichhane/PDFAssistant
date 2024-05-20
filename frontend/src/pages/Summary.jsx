@@ -22,6 +22,7 @@ const Summary = () => {
     const tagsData = location.state?.tagData;
     const titleData = location.state?.title[0];
     const totalPages = location.state?.totalPages;
+    const uniqueTags = [...new Set(tagsData)];
 
     const [summary,setSummary] = useState(summaryData)
     const [question, setQuestion] = useState('');
@@ -108,7 +109,7 @@ const Summary = () => {
                             {title}
                         </h1>
                         <div className="mt-6 flex flex-wrap justify-center gap-2">
-                            {tagsData.map((tag, index) => (
+                            {uniqueTags.map((tag, index) => (
                                 <span key={index} className="inline-flex items-center justify-center px-3 py-1 text-sm font-medium text-gray-700 bg-gray-200 rounded-md mr-2">
                                     {tag.replace(/"/g, '')}
                                 </span>

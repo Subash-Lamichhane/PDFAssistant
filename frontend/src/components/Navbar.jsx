@@ -17,7 +17,7 @@ const Navbar = () => {
                         <span className="self-center text-2xl font-semibold whitespace-nowrap">PDF<span className=" text-yellow-500">Assistant</span></span>
                     </Link>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                        <a href="https://github.com" className="hidden md:flex">
+                        <a href="https://github.com/Subash-Lamichhane/PDFAssistant" className="hidden md:flex">
                             <button type="button" className="bg-gray-300 hover:bg-gray-400 text-black md:px-5 md:py-2 rounded-md flex items-center space-x-2 mx-3 font-[600]">
                                 <FaGithub />
                                 <span>GitHub</span>

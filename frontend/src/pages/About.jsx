@@ -87,7 +87,7 @@ const About = () => {
                     <section className="w-full py-12 md:py-24 lg:py-32 border-t md:px-32">
                         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
                             <div className="space-y-3">
-                                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Unlock the Power of PDF Insights</h2>
+                                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Unlock the Power of PDFAssistant</h2>
                                 <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     Start using our AI-powered tool to quickly extract key information, summaries, and insights from your PDF documents.
                                 </p>
