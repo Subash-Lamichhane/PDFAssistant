@@ -81,6 +81,10 @@ async def process_pdf(
     with open(file_path, "wb") as f:
         f.write(await file.read())
 
+    with open(file_path, "rb") as file:
+        pdf_reader = PyPDF2.PdfReader(file)
+        pdf_pages = len(pdf_reader.pages)
+
     # Extract text from the specified page
     text = extract_text_from_pdf(file_path, page_no)
     if text is None:
@@ -104,8 +108,9 @@ async def process_pdf(
         raise HTTPException(status_code=400, detail="Invalid function name")
 
     os.remove(file_path)  # Clean up the file
-    return JSONResponse(content={"result": result})
+    return JSONResponse(content={"result": result, "totalpages": pdf_pages})
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
