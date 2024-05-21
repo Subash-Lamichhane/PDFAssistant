@@ -6,16 +6,6 @@ import axios from 'axios';
 
 
 const Summary = () => {
-    // const qnanswer = {
-    //     "result": {
-    //         "answer": [
-    //             "yes"
-    //         ],
-    //         "explanation": [
-    //             "Solar flares are magnetic eruptions from the Suns corona which can cause severe disruptions to satellite communication and electrical grids."
-    //         ]
-    //     }
-    // }
     const location = useLocation();
     const summaryData = location.state?.response || [];
     const pdffile = location.state?.selectedFile;
@@ -62,13 +52,6 @@ const Summary = () => {
             });
 
             setSummary(response.data.result)
-            // console.log(pageno+1)
-            // console.log(response.data.result)
-            // setSummary([
-            //             "tehajkdhfkjasfd Solar flares magnetic eruptions from the Suns corona and CMEs massive plasma expulsions captivate scientists due to their potential effects on modern technology",
-            //             "The study explores a thorough analysis of solar flares and coronal mass ejections (CMEs) and their impact on Earths satellite communication and electrical grids",
-            //             "The findings reveal the potential devastation caused by rare super solar storms occurring once or twice per century"
-            //         ])
             console.log(summary)
         }
         else{

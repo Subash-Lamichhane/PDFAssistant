@@ -23,7 +23,7 @@ const Navbar = () => {
                                 <span>GitHub</span>
                             </button>
                         </a>
-                        <a href="https://quine.sh" className="hidden md:flex">
+                        <a href="https://quine.sh/repo/Subash-Lamichhane-PDFAssistant-802497373" className="hidden md:flex">
                             <button type="button" className="bg-[#4fe331] hover:bg-green-600 text-black md:px-5 md:py-2 rounded-md flex items-center space-x-2 px-2 font-[600]">
                                 <span>Quine</span>
                             </button>

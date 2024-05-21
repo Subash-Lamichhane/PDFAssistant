@@ -27,7 +27,7 @@ const FAQ = () => {
     },
     {
       question: "Is there a limit to the size or length of the PDF files that can be uploaded?",
-      answer: "There may be some limitations on the size or length of PDF files that can be processed, depending on the web app's specific technical constraints. Generally, the app is designed to handle small article lengths."
+      answer: "There are some limitations on the size or length of PDF files that can be processed, depending on the web app's specific technical constraints. Generally, the app is designed to handle small article lengths."
     }
   ];
   

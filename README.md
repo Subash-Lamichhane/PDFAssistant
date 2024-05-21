@@ -30,7 +30,7 @@
     </p>
 </p>
 
-Welcome to PDFAssistant, a powerful web application designed to make working with PDF documents easier and more efficient. PDFAssistant allows you to extract keywords, generate summaries by page, and ask questions related to the content of your PDFs with the help of llmware. Whether you're a student, researcher, or professional, PDFAssistant is here to help you quickly navigate and understand your documents.
+Welcome to PDFAssistant, a powerful web application designed to make working with PDF documents easier and more efficient. PDFAssistant allows you to extract keywords, generate summaries by page, and ask questions related to the content of your PDFs with the help of llmware models. Whether you're a student, researcher, or professional, PDFAssistant is here to help you quickly navigate and understand your documents.
 
 ## Introduction
 PDFAssistant is a web application that provides a suite of tools for analyzing PDF documents. It simplifies the process of extracting essential information from PDFs, enabling users to focus on the content that matters most. With PDFAssistant, you can obtain key insights from your documents without the hassle of manually sifting through pages.
@@ -42,7 +42,7 @@ PDFAssistant is a web application that provides a suite of tools for analyzing P
 - **Question and Answer**: Ask questions related to the content of your PDF, and PDFAssistant will provide accurate and relevant answers. This feature is particularly useful for research and study purposes, as it helps you find specific information without extensive reading.
 
 ## Demo
-<video src=""></video>
+<video src="https://github.com/Subash-Lamichhane/PDFAssistant/assets/109226874/3c64a8fd-7ca8-485e-8fba-5d1885388e64"></video>
 
 ## Dependencies
 - React

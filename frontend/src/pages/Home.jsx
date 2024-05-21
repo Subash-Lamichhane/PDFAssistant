@@ -5,27 +5,6 @@ import { json, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Home = () => {
-    // const resdata = {
-    //     "result": [
-    //         "Solar flares magnetic eruptions from the Suns corona and CMEs massive plasma expulsions captivate scientists due to their potential effects on modern technology",
-    //         "The study explores a thorough analysis of solar flares and coronal mass ejections (CMEs) and their impact on Earths satellite communication and electrical grids",
-    //         "The findings reveal the potential devastation caused by rare super solar storms occurring once or twice per century"
-    //     ]
-    // }
-    // const tagData = {
-    //     "result": {
-    //         "tags": "[\"Solar flares\", \"Coronal mass ejection\", \"Earth\"s satellite communication\", \"Earth\"s magnetic field\", \"Carrington event\", \"Quebec incident\", \"Carrington event\", \"Aurora\", \"A Comprehensive Analysis of the Impact of Solar Flares\", \"1859\", \"1989\", \"1\"]"
-    //     }
-    // }
-    // const tagsArray = tagData.result.tags
-
-    // const TitleData={
-    //     "result": {
-    //         "topics": [
-    //             "solar flares"
-    //         ]
-    //     }
-    // }
     const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
